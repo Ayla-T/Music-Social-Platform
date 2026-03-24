@@ -74,5 +74,37 @@
     </div>
 
     <script src="script.js"></script>
+
+    <h2>Search Music</h2>
+<input type="text" id="search" placeholder="Search for songs...">
+<button onclick="searchMusic()">Search</button>
+
+<div id="results"></div>
+
+<script>
+async function searchMusic() {
+  const term = document.getElementById("search").value;
+  const res = await fetch(`https://itunes.apple.com/search?term=${term}&entity=song&limit=5`);
+  const data = await res.json();
+
+  const resultsDiv = document.getElementById("results");
+  resultsDiv.innerHTML = "";
+
+  data.results.forEach(song => {
+    const div = document.createElement("div");
+
+    div.innerHTML = `
+      <p><strong>${song.trackName}</strong> - ${song.artistName}</p>
+      <img src="${song.artworkUrl100}">
+      <br>
+      <audio controls src="${song.previewUrl}"></audio>
+      <hr>
+    `;
+
+    resultsDiv.appendChild(div);
+  });
+}
+</script>
+    
   </body>
 </html>
