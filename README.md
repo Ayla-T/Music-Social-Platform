@@ -55,15 +55,9 @@ cd Music-Social-Platform
 npm install
 ```
 
-**3. Create a `.env` file** in the root of the project folder
+**3. Create a `.env` file** in the root of the project folder (same level as `package.json`).
 
-```
-PORT=3000
-MONGO_URI=mongodb+srv://LomoSaltado1516:Lomo1516@music-website.43gtilk.mongodb.net/music-website?appName=music-website
-SESSION_SECRET=musicwebsitesecretkey123
-```
-
-> The `.env` file is never pushed to GitHub for security reasons. You must create it manually on every device you work on.
+> The '.env' file should never be pushed to GitHub due to security reasons.  In which case, please contact one of the repository owners or contributors to receive the `.env` contents, then create the file manually on your device.
 
 ---
 
