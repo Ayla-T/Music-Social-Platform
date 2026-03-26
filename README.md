@@ -13,13 +13,11 @@
 
 ## 🛠 Tools & Technologies
 
-- HTML
-- CSS
-- JavaScript
-- Node.js
-- Express
-- MongoDB Atlas
-- Mongoose
+- **Frontend:** React.js
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB Atlas
+- **ODM:** Mongoose
+- **Auth:** bcrypt, express-session
 
 ## ⚙️ Getting Started
 
@@ -49,41 +47,53 @@ git clone https://github.com/Devaloupe/Music-Social-Platform.git
 cd Music-Social-Platform
 ```
 
-**2. Install dependencies:**
-
+**2. Install backend dependencies** (run this in the root folder):
+ 
 ```bash
 npm install
 ```
 
-**3. Create a `.env` file** in the root of the project folder (same level as `package.json`).
+**3. Install frontend dependencies:**
+ 
+```bash
+cd frontend
+npm install
+cd ..
+```
+
+**4. Create a `.env` file** in the root of the project folder
 
 > The '.env' file should never be pushed to GitHub due to security reasons.  In which case, please contact one of the repository owners or contributors to receive the `.env` contents, then create the file manually on your device.
 
 ---
 
-### Running the Server
-
+### Running the Project
+ 
+You need **two terminals** open at the same time:
+ 
+**Terminal 1 — Start the backend server:**
+ 
 ```bash
-node backend/server.js
+node Server/server.js
 ```
-
+ 
 You should see:
-
 ```
-Server running on port 3000
+Server running on port 3001
 MongoDB connected!
 ```
-
-To stop the server press `Ctrl + C`.
-
----
-
-### Running the Frontend
-
-Open `frontend/index.html` using **VS Code Live Server** or open it directly in your browser.
-
-> Make sure the server is running before testing login or signup — otherwise you'll get a "Could not connect to server" error.
-
+ 
+**Terminal 2 — Start the React frontend:**
+ 
+```bash
+cd frontend
+npm start
+```
+ 
+React will automatically open your browser at `http://localhost:3000`
+ 
+> Both servers must be running at the same time for the app to work.
+ 
 ---
 
 ## 📸 Pictures / Videos

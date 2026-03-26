@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Nunito:wght@300;400;600&display=swap');
+
+:root {
+  --bg: #05000a;
+  --bg2: #0d0015;
+  --purple-dark: hsl(265, 100%, 25%);
+  --purple-mid: hsl(265, 100%, 45%);
+  --purple-light: hsl(265, 100%, 65%);
+  --purple-glow: hsla(265, 100%, 60%, 0.4);
+  --text: #ffffff;
+  --text-muted: rgba(255,255,255,0.4);
+  --input-bg: rgba(255,255,255,0.05);
+  --input-border: hsl(265, 40%, 30%);
+  --card-bg: rgba(13, 0, 21, 0.85);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Nunito', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.app {
+  min-height: 100vh;
+  position: relative;
+}
+
+/* --- FALLING NOTES BACKGROUND --- */
+.notes-bg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.falling-note {
+  position: absolute;
+  top: -60px;
+  font-size: 1.5rem;
+  animation: fall linear infinite;
+  opacity: 0;
+  user-select: none;
+}
+
+@keyframes fall {
+  0%   { transform: translateY(0) rotate(-15deg); opacity: 0; }
+  5%   { opacity: 1; }
+  90%  { opacity: 0.6; }
+  100% { transform: translateY(110vh) rotate(15deg); opacity: 0; }
+}
+
+/* --- AUTH CARD --- */
+.auth-wrapper {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.brand-title {
+  font-family: 'Cinzel', serif;
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--purple-light);
+  text-shadow: 0 0 30px var(--purple-glow), 0 0 60px var(--purple-glow);
+  margin-bottom: 40px;
+  letter-spacing: 4px;
+}
+
+.auth-card {
+  background: var(--card-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 16px;
+  padding: 40px;
+  width: 100%;
+  max-width: 420px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 60px hsla(265, 100%, 20%, 0.4);
+}
+
+.auth-card h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin-bottom: 28px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* --- FORM ELEMENTS --- */
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 13px 16px;
+  background: var(--input-bg);
+  border: 1.5px solid var(--input-border);
+  border-radius: 8px;
+  color: var(--text);
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.form-group input::placeholder {
+  color: rgba(255,255,255,0.2);
+}
+
+.form-group input:focus {
+  border-color: var(--purple-light);
+  box-shadow: 0 0 16px var(--purple-glow);
+  background: rgba(255,255,255,0.08);
+}
+
+/* --- BUTTONS --- */
+.btn-primary {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, var(--purple-dark), var(--purple-mid));
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 8px;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px var(--purple-glow);
+  background: linear-gradient(135deg, var(--purple-mid), var(--purple-light));
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* --- LINKS --- */
+.auth-links {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 20px;
+}
+
+.auth-links button {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.auth-links button:hover {
+  color: var(--purple-light);
+}
+
+/* --- MESSAGES --- */
+.message {
+  font-size: 0.85rem;
+  text-align: center;
+  margin-top: 14px;
+  min-height: 20px;
+  padding: 8px;
+  border-radius: 6px;
+}
+
+.message.error {
+  color: #ff6b6b;
+  background: rgba(255, 107, 107, 0.1);
+}
+
+.message.success {
+  color: #6bffb8;
+  background: rgba(107, 255, 184, 0.1);
+}
