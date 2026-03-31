@@ -1,5 +1,6 @@
 
 let counter = 0;
+let numberOfPlaylists = 0;
 async function searchMusic() {
     const term = document.getElementById('search').value.trim();
     if (!term) return;
@@ -76,22 +77,43 @@ function addToPlaylist(buttonID){
   let deleteButton = document.createElement('button');
   deleteButton.innerHTML = "Delete";
   deleteButton.id = deleteID;
-  //deleteButton.setAttribute("onClick", "deleteSong(songID)");
-  //deleteButton.setAttribute("onClick", "deleteSong()");
-  //deleteButton.addEventListener("click", deleteSong.bind(null,newDiv.id));
+
   console.log("created " + deleteButton.id);
   newDiv.appendChild(deleteButton);
   
-  //console.log(newDiv);
-  //newDiv.innerHTML = currentSearchedSongs[index];
   queue.appendChild(newDiv);
   counter++;
-  deleteButton.addEventListener("click", deleteSong.bind(null,songID));
+  deleteButton.addEventListener("click", deleteSong.bind(null,newDiv));
   
 }
 
-function deleteSong(currentSongID){
-  console.log("delete button clicked for " + currentSongID);
-  const currentSong = document.getElementById(currentSongID);
+function deleteSong(currentSong){
+  console.log("delete button clicked for " + currentSong.id);
+  //const currentSong = document.getElementById(currentSongID);
   currentSong.remove();
+}
+
+function finishPlaylist(){
+  const nameField = document.getElementById("playlistname");
+  let name = nameField.value;
+  console.log("finish playlist button clicked: " + name);
+  
+  const playlist = document.createElement('div');
+  playlist.id = "playlist" + numberOfPlaylists;
+  console.log(playlist.id);
+  
+  const attachingName = document.createTextNode(name);
+  playlist.appendChild(attachingName);
+  
+  //should attach username to the playlist in the database but im not doing that right now
+  
+  for (let i = 0; i<counter;i++){
+    let appendingSongName = "song" + i;
+    let appendingSong = document.getElementById(appendingSongName);
+    playlist.append(appendingSong);
+  }
+  
+  allPlaylists.appendChild(playlist);
+  console.log(allPlaylists);
+  
 }
