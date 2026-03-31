@@ -90,7 +90,7 @@ cd frontend
 npm start
 ```
  
-React will automatically open your browser at `http://localhost:3000`
+React will automatically open your browser at `http://local host:3000`
  
 > Both servers must be running at the same time for the app to work.
  
